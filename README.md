@@ -145,15 +145,15 @@ Cliente → POST /auth/register ou /auth/login
 ### Pirâmide de Testes
 
 ```
-              ╱▔▔▔▔▔▔▔╲
+              ╱▔▔▔▔╲
              ╱   E2E    ╲          🔲 Planejado (Cypress / Playwright)
-            ╱─────────────╲
-           ╱  Integração   ╲       🔲 Planejado (Spring Boot Test)
-          ╱─────────────────╲
-         ╱  Funcionais / API  ╲    ✅ Em execução (IntelliJ HTTP Client)
-        ╱─────────────────────╲
-       ╱      Unitários        ╲   🔲 Planejado (JUnit 5 + Mockito)
-      ╱─────────────────────────╲
+            ╱────────────╲
+           ╱  Integração  ╲       🔲 Planejado (Spring Boot Test)
+          ╱────────────────╲
+         ╱  Funcionais / API╲    ✅ Em execução (IntelliJ HTTP Client)
+        ╱────────────────────╲
+       ╱      Unitários       ╲   🔲 Planejado (JUnit 5 + Mockito)
+      ╱────────────────────────╲
 ```
 
 ### Tipos de teste aplicados
