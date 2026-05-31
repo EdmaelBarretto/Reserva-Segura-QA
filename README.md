@@ -1,25 +1,22 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/QA-Quality%20Assurance-2D6A4F?style=for-the-badge&logoColor=white"/>
-<img src="https://img.shields.io/badge/Status-Em%20Progresso-F4A261?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Cobertura%20Auth-100%25-52B788?style=for-the-badge"/>
-<img src="https://img.shields.io/badge/Sprint-1-457B9D?style=for-the-badge"/>
+# Reserva Segura — QA
 
-# 🛡️ Reserva Segura — QA Repository
+**Repositório de Qualidade de Software**
+Residência Tecnológica Take Off · Squad 29 · Bradesco 2026.1
 
-**Repositório oficial de Qualidade de Software do projeto Reserva Segura**
+[![Status](https://img.shields.io/badge/Status-Em%20Progresso-F4A261?style=flat-square)](.)
+[![Auth](https://img.shields.io/badge/Auth-100%25%20aprovado-52B788?style=flat-square)](.)
+[![Sprint](https://img.shields.io/badge/Sprint-1-457B9D?style=flat-square)](.)
+[![JMeter](https://img.shields.io/badge/JMeter-Executado-E25C2C?style=flat-square)](.)
 
-*Residência Tecnológica Take Off · Squad 29 · Bradesco 2026.1*
-
-[🌐 Produção](https://projeto-reserva-segura-front-end.vercel.app/) · [📦 Back-End](https://github.com/EdmaelBarretto/ProjetoReservaSegura_Back-End) · [🎨 Front-End](https://github.com/EdmaelBarretto/Projeto-Reserva-Segura_Take-Off) · [🛡️ QA](https://github.com/EdmaelBarretto/Reserva-Segura-QA)
+[Produção](https://projeto-reserva-segura-front-end.vercel.app/) · [Back-End](https://github.com/EdmaelBarretto/ProjetoReservaSegura_Back-End) · [Front-End](https://github.com/EdmaelBarretto/Projeto-Reserva-Segura_Take-Off)
 
 </div>
 
 ---
 
-## 👥 Equipe — Squad 29
-
-**Código/Sigla:** RS · **Nome do Projeto:** RESERVA SEGURA
+## Equipe
 
 | Nome | Papel |
 |------|-------|
@@ -32,440 +29,233 @@
 
 ---
 
-## 📋 Índice
+## Sobre
 
-- [Sobre este Repositório](#-sobre-este-repositório)
-- [Visão Geral do Produto](#-visão-geral-do-produto)
-- [Arquitetura do Sistema](#-arquitetura-do-sistema)
-- [Ambientes de Teste](#-ambientes-de-teste)
-- [Estratégia de Testes](#-estratégia-de-testes)
-- [Plano de Testes](#-plano-de-testes)
-- [Cenários de Teste — Resultados](#-cenários-de-teste--resultados)
-- [Como Executar os Testes](#-como-executar-os-testes)
-- [Estrutura de Evidências](#-estrutura-de-evidências)
-- [Rastreabilidade de Bugs](#-rastreabilidade-de-bugs)
-- [Métricas de Qualidade](#-métricas-de-qualidade)
-- [Definição de Pronto (DoD)](#-definição-de-pronto-dod)
-- [Roadmap de Automação](#-roadmap-de-automação)
-- [Convenções e Contribuição](#-convenções-e-contribuição)
+Este repositório centraliza os artefatos de QA do sistema **Reserva Segura** — plataforma gamificada de educação financeira e poupança. Cobre testes funcionais de API, testes de integração e testes de performance com Apache JMeter.
+
+**Stack testada:** React + Vite (Vercel) · Java 17 / Spring Boot 3.2.5 (Railway) · PostgreSQL (Railway)
 
 ---
 
-## 📌 Sobre este Repositório
+## Estratégia
 
-Este repositório centraliza todos os artefatos de **Quality Assurance** do sistema Reserva Segura. O objetivo é garantir a rastreabilidade completa entre requisitos, casos de teste, execuções e evidências, promovendo a qualidade de forma contínua ao longo do desenvolvimento.
-
-**O que você encontra aqui:**
-
-| Artefato | Descrição |
-|---|---|
-| 📄 Plano de Testes | Estratégia, escopo, critérios de entrada/saída |
-| 🧪 Casos de Teste | CTs documentados por módulo com pré-condições e passos |
-| 📸 Evidências | Screenshots e logs organizados por CT |
-| 🐛 Bug Report | Rastreamento de defeitos com severidade e status |
-| 📊 Métricas | Cobertura, taxa de aprovação e indicadores de qualidade |
-| ⚙️ Scripts `.http` | Requisições versionadas para o HTTP Client do IntelliJ |
+| Tipo | Ferramenta | Escopo | Status |
+|------|-----------|--------|--------|
+| Testes de API (caixa-preta) | IntelliJ HTTP Client | Auth, Goals, Transactions | ✅ Em execução |
+| Testes de carga | Apache JMeter | Front-end (Vercel) | ✅ Executado |
+| Testes de stress | Apache JMeter | Front-end (Vercel) | ✅ Executado |
+| Testes unitários | JUnit 5 + Mockito | Services, Repositories | 🔲 Planejado |
+| Testes E2E | Cypress / Playwright | Front-end | 🔲 Planejado |
+| Automação de API | Postman + Newman | Todos os endpoints | 🔲 Planejado |
 
 ---
 
-## 🎯 Visão Geral do Produto
+## Resultados — Testes Funcionais de API
 
-O **Reserva Segura** é uma plataforma gamificada de educação financeira e poupança. O sistema permite que usuários criem metas de poupança ("caixinhas"), realizem depósitos, acompanhem seu progresso e sejam recompensados por meio de um sistema de XP, badges, missões diárias e ligas — tornando o hábito de poupar uma jornada motivadora.
+> ✅ Passou · ⚠️ Pendente · ❌ Falhou · 🔲 Não executado
 
-**Principais módulos funcionais sob teste:**
+### Autenticação `/auth`
 
-- 🔐 Autenticação (registro, login, JWT)
-- 🎯 Metas de poupança — Goals (CRUD completo)
-- 💸 Transações e depósitos
-- 👤 Perfil do usuário (XP, pontos, nível)
+| CT | Cenário | Método | Status |
+|----|---------|--------|--------|
+| CT01 | Registro com dados válidos → 200 + token JWT | POST `/auth/register` | ✅ |
+| CT02 | Registro com e-mail duplicado → 400 | POST `/auth/register` | ✅ |
+| CT03 | Registro com CPF duplicado → 400 | POST `/auth/register` | ✅ |
+| CT04 | Registro com campos vazios → 400 | POST `/auth/register` | ✅ |
+| CT05 | Registro sem body → 400 | POST `/auth/register` | ✅ |
+| CT06 | Login com credenciais válidas → 200 + token JWT | POST `/auth/login` | ✅ |
+| CT07 | Login com senha incorreta → 401/403 | POST `/auth/login` | ✅ |
+| CT08 | Login com e-mail inexistente → 401/404 | POST `/auth/login` | ✅ |
+| CT09 | Login sem body → 400 | POST `/auth/login` | ✅ |
 
----
+**9/9 aprovados · 100%**
 
-## 🏗️ Arquitetura do Sistema
+### Usuário `/auth/usuario`
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    RESERVA SEGURA                       │
-├──────────────────┬──────────────────┬───────────────────┤
-│    FRONT-END     │    BACK-END      │   BANCO DE DADOS  │
-│                  │                  │                   │
-│  React + Vite    │  Java 17         │  PostgreSQL       │
-│  Tailwind CSS    │  Spring Boot     │  Railway          │
-│                  │  3.2.5           │                   │
-│  Vercel          │  Railway         │  turntable.proxy  │
-│                  │                  │  .rlwy.net:18662  │
-└──────────────────┴──────────────────┴───────────────────┘
-```
+| CT | Cenário | Método | Status |
+|----|---------|--------|--------|
+| CT10 | Buscar dados do usuário autenticado → 200 | GET `/auth/usuario/{id}` | ⚠️ |
 
-**Repositórios:**
+### Metas `/metas`
 
-| Camada | Repositório | Deploy |
-|---|---|---|
-| 🎨 Front-End | [Projeto-Reserva-Segura_Take-Off](https://github.com/EdmaelBarretto/Projeto-Reserva-Segura_Take-Off) | [Vercel](https://projeto-reserva-segura-front-end.vercel.app/) |
-| ⚙️ Back-End | [ProjetoReservaSegura_Back-End](https://github.com/EdmaelBarretto/ProjetoReservaSegura_Back-End) | Railway |
-| 🛡️ QA | [Reserva-Segura-QA](https://github.com/EdmaelBarretto/Reserva-Segura-QA) | — |
+| CT | Cenário | Método | Status |
+|----|---------|--------|--------|
+| CT11 | Criar meta com token válido → 201 | POST `/metas` | ⚠️ |
+| CT12 | Listar metas do usuário → 200 | GET `/metas?userId={id}` | ⚠️ |
+| CT15 | Atualizar meta existente → 200 | PUT `/metas/{id}` | ⚠️ |
+| CT16 | Deletar meta existente → 204 | DELETE `/metas/{id}` | ⚠️ |
 
-**Estrutura de pacotes — Back-End:**
+### Transações `/movimentacoes`
 
-```
-br.com.reservasegura
-├── controller/
-│   ├── AuthController.java         ← /auth/register, /auth/login
-│   ├── GoalController.java         ← /metas (CRUD)
-│   └── TransactionController.java  ← /movimentacoes
-├── dto/                            ← Request/Response objects
-├── entity/                         ← User, Goal, Transaction
-├── exception/                      ← GlobalExceptionHandler
-├── repository/                     ← Spring Data JPA interfaces
-├── security/                       ← JwtFilter, JwtService, SecurityConfig
-└── service/                        ← Regras de negócio
-```
+| CT | Cenário | Método | Status |
+|----|---------|--------|--------|
+| CT13 | Registrar transação com token válido → 201 | POST `/movimentacoes` | ⚠️ |
+| CT14 | Listar transações do usuário → 200 | GET `/movimentacoes?userId={id}` | ⚠️ |
 
-**Modelo de dados:**
+### Deploy e Integração
 
-| Entidade | Tabela | Campos principais |
-|---|---|---|
-| `User` | `usuario` | id, nome, email, cpf, senha, xp_total, pontos_premio |
-| `Goal` | `meta_reserva` | id, nome, valor_alvo, valor_atual, user_id (FK) |
-| `Transaction` | `movimentacoes` | id, valor, tipo, criado_em, goal_id (FK), user_id (FK) |
+| CT | Cenário | Status |
+|----|---------|--------|
+| CT17 | Back-end online no Railway | ✅ |
+| CT18 | CORS configurado para o front-end Vercel | ✅ |
+| CT19 | `VITE_API_URL` apontando para produção | ✅ |
+| CT20 | Login funcionando em produção (Vercel + Railway) | ✅ |
 
-**Fluxo de autenticação JWT:**
-
-```
-Cliente → POST /auth/register ou /auth/login
-       → JwtFilter (verifica Bearer token no header)
-       → SecurityConfig (rotas públicas: /auth/**)
-       → AuthController (valida body da requisição)
-       → UserRepository (consulta/persiste no PostgreSQL)
-       → JwtService (gera token assinado)
-       → AuthResponse: { token, userId, nome } — 200 OK
-```
+> Os CTs 10–16 aguardam configuração do `{{token}}` no ambiente HTTP Client. Os retornos 403 observados são comportamento esperado de segurança (rotas protegidas por JWT).
 
 ---
 
-## 🌍 Ambientes de Teste
+## Resultados — Testes de Performance (Apache JMeter)
 
-| Ambiente | Front-End | Back-End | Banco |
-|---|---|---|---|
-| **Desenvolvimento** | `localhost:5173` | `localhost:8080` | Railway (PostgreSQL) |
-| **Produção** | [projeto-reserva-segura-front-end.vercel.app](https://projeto-reserva-segura-front-end.vercel.app/) | Railway | Railway (PostgreSQL) |
+**Alvo:** `https://projeto-reserva-segura-front-end.vercel.app/` · **Data:** 31/05/2026
 
----
+### Teste de Carga — 100 usuários
 
-## 🧠 Estratégia de Testes
+| Parâmetro | Valor |
+|-----------|-------|
+| Threads | 100 |
+| Iterações | 10 |
+| Total de requisições | 1.000 |
+| Método | GET HTTPS |
 
-### Pirâmide de Testes
+| Métrica | Resultado | Status |
+|---------|-----------|--------|
+| % de Erro | 0,00% | ✅ |
+| Tempo médio | 251 ms | ✅ |
+| Tempo mínimo | 71 ms | ✅ |
+| Tempo máximo | 2.117 ms | ✅ |
+| Desvio padrão | 485,24 ms | ⚠️ |
+| Throughput | 340,3 req/s | ✅ |
 
-```
-              ╱▔▔▔▔╲
-             ╱   E2E    ╲          🔲 Planejado (Cypress / Playwright)
-            ╱────────────╲
-           ╱  Integração  ╲       🔲 Planejado (Spring Boot Test)
-          ╱────────────────╲
-         ╱  Funcionais / API╲    ✅ Em execução (IntelliJ HTTP Client)
-        ╱────────────────────╲
-       ╱      Unitários       ╲   🔲 Planejado (JUnit 5 + Mockito)
-      ╱────────────────────────╲
-```
-
-### Tipos de teste aplicados
-
-| Tipo | Técnica | Módulos cobertos |
-|---|---|---|
-| Caixa-preta | Validação de entradas/saídas da API | Auth, Goals, Transactions |
-| Particionamento de equivalência | Cenários positivos e negativos por endpoint | Todos |
-| Análise de valor limite | Campos obrigatórios, duplicatas, body vazio | Auth |
-| Teste de segurança básico | Acesso a rotas protegidas sem/com token | Goals, Transactions |
-| Teste de integração manual | Front-end ↔ Back-end ↔ Banco | Fluxo completo |
-
-### Ferramentas
-
-| Ferramenta | Finalidade | Status |
-|---|---|---|
-| IntelliJ HTTP Client | Execução manual de testes de API | ✅ Em uso |
-| Arquivos `.http` | Scripts de requisição versionados no repositório | ✅ Em uso |
-| Railway Dashboard | Verificação do estado do banco em produção | ✅ Em uso |
-| GitHub Issues | Rastreamento de bugs e pendências | ✅ Em uso |
-| Postman / Newman | Automação e CI dos testes de API | 🔲 Planejado |
-| JUnit 5 + Mockito | Testes unitários de services e repositories | 🔲 Planejado |
-| Cypress | Testes E2E no front-end (Vercel) | 🔲 Planejado |
+**✅ APROVADO** — Sistema estável para até 100 usuários simultâneos com 0% de erro.
 
 ---
 
-## 📝 Plano de Testes
+### Teste de Stress — 10.000 usuários
 
-### Escopo
+| Parâmetro | Valor |
+|-----------|-------|
+| Threads | 10.000 |
+| Iterações | 10 |
+| Total de requisições | 100.000 |
+| Método | GET HTTPS |
 
-**Incluído:**
-- API REST — todos os endpoints documentados
-- Fluxo de autenticação completo (registro → login → token → acesso)
-- CRUD de Goals e Transactions com autorização JWT
-- Validações de campos e tratamento de erros (4xx)
-- Acesso ao ambiente de produção (Vercel + Railway)
+| Métrica | Resultado | Status |
+|---------|-----------|--------|
+| % de Erro | 88,08% | 🔴 |
+| Tempo médio | 787 ms | ⚠️ |
+| Tempo mínimo | 60 ms | — |
+| Tempo máximo | 42.869 ms | 🔴 |
+| Desvio padrão | 3.327,50 ms | 🔴 |
+| Throughput | 1.884,2 req/s | ⚠️ |
+| Tipo de erro | HTTP 403 Forbidden | 🔴 |
 
-**Excluído (sprint atual):**
-- Testes de performance e carga
-- Testes de segurança avançados (pentest)
-- Testes de acessibilidade no front-end
+A Vercel ativou proteção automática contra abuso (`X-Vercel-Mitigated: deny`) após o volume de requisições ultrapassar o limite do plano gratuito, retornando 403 para 88% das requisições. O site ficou temporariamente inacessível no navegador para todos os usuários durante o teste.
 
-### Critérios de entrada
-
-- [ ] Back-end rodando em `localhost:8080` ou Railway
-- [ ] Banco PostgreSQL acessível via Railway
-- [ ] Variável `{{token}}` configurada no ambiente HTTP Client para CTs autenticados
-
-### Critérios de saída
-
-- [ ] 100% dos CTs de autenticação executados
-- [ ] 100% dos CTs de rotas autenticadas executados com token válido
-- [ ] Zero bugs de severidade **Alta** em aberto
-- [ ] Evidências anexadas para todos os CTs executados
+**🔴 REPROVADO** — Ponto de ruptura entre 100 e 10.000 usuários simultâneos.
 
 ---
 
-## 🧪 Cenários de Teste — Resultados
+### Comparativo
 
-> **Legenda de status:** ✅ Passou · ⚠️ Parcial / Pendente · ❌ Falhou · 🔲 Não executado
-
----
-
-### Módulo: Autenticação — `/auth`
-
-**Ferramenta:** IntelliJ HTTP Client · **Ambiente:** `localhost:8080` · **Data:** 10/05/2026
-
-| CT | Tipo | Endpoint | Método | Pré-condição | Resultado Esperado | Resultado Obtido | Status |
-|---|---|---|---|---|---|---|---|
-| CT01 | Positivo | `/auth/register` | POST | Usuário não cadastrado | 200 OK + `{ token, userId, nome }` | 200 OK + token JWT | ✅ |
-| CT02 | Negativo | `/auth/register` | POST | Email já existente no banco | 400 Bad Request + mensagem de erro | 400 + "Email já cadastrado" | ✅ |
-| CT03 | Negativo | `/auth/register` | POST | CPF já existente no banco | 400 Bad Request + mensagem de erro | 400 + "CPF duplicado" | ✅ |
-| CT04 | Negativo | `/auth/register` | POST | Body com campos vazios (`""`) | 400 Bad Request — validação de campos | 400 + erros de validação | ✅ |
-| CT05 | Negativo | `/auth/register` | POST | Body ausente na requisição | 400 Bad Request — campos obrigatórios | 400 + campos obrigatórios | ✅ |
-| CT06 | Positivo | `/auth/login` | POST | Usuário cadastrado, credenciais corretas | 200 OK + `{ token, userId, nome }` | 200 OK + token JWT | ✅ |
-| CT07 | Negativo | `/auth/login` | POST | Senha incorreta para email existente | 401 Unauthorized | 403 / 401 | ✅ |
-| CT08 | Negativo | `/auth/login` | POST | Email não cadastrado | 404 Not Found | 401 / 404 | ✅ |
-| CT09 | Negativo | `/auth/login` | POST | Body ausente na requisição | 400 Bad Request — campos obrigatórios | 400 + campos obrigatórios | ✅ |
-
-**Resultado do módulo:** `9/9 aprovados — 100% ✅`
+| Métrica | Carga (100) | Stress (10.000) | Δ |
+|---------|-------------|-----------------|---|
+| Tempo médio | 251 ms | 787 ms | +213% |
+| Tempo máximo | 2.117 ms | 42.869 ms | +1.925% |
+| % de Erro | 0,00% | 88,08% | — |
+| Throughput | 340,3 req/s | 1.884,2 req/s* | *88% erros |
+| Resultado | ✅ Aprovado | 🔴 Reprovado | — |
 
 ---
 
-### Módulo: Usuário — `/auth/usuario`
+## Bugs
 
-| CT | Tipo | Endpoint | Método | Pré-condição | Resultado Esperado | Resultado Obtido | Status |
-|---|---|---|---|---|---|---|---|
-| CT10 | Positivo | `/auth/usuario/{id}` | GET | Token JWT válido no header | 200 OK + dados do usuário autenticado | A validar | ⚠️ |
-
----
-
-### Módulo: Metas — `/metas`
-
-| CT | Tipo | Endpoint | Método | Pré-condição | Resultado Esperado | Resultado Obtido | Status |
-|---|---|---|---|---|---|---|---|
-| CT11 | Positivo | `/metas` | POST | Token válido + body com nome e valorAlvo | 200 Created + meta criada | A validar | ⚠️ |
-| CT12 | Positivo | `/metas?userId={id}` | GET | Token JWT válido no header | 200 OK + lista de metas do usuário | 403 sem token | ⚠️ |
-| CT15 | Positivo | `/metas/{id}` | PUT | Token válido + ID de meta existente | 200 OK + meta atualizada | A validar | ⚠️ |
-| CT16 | Positivo | `/metas/{id}` | DELETE | Token válido + ID de meta existente | 204 No Content | A validar | ⚠️ |
-
----
-
-### Módulo: Transações — `/movimentacoes`
-
-| CT | Tipo | Endpoint | Método | Pré-condição | Resultado Esperado | Resultado Obtido | Status |
-|---|---|---|---|---|---|---|---|
-| CT13 | Positivo | `/movimentacoes` | POST | Token válido + body com valor e goalId | 200 Created + transação registrada | A validar | ⚠️ |
-| CT14 | Positivo | `/movimentacoes?userId={id}` | GET | Token JWT válido no header | 200 OK + lista de transações | 403 sem token | ⚠️ |
-
----
-
-### Módulo: Deploy e Integração
-
-| CT | Tipo | Descrição | Resultado Esperado | Resultado Obtido | Status |
-|---|---|---|---|---|---|
-| CT17 | Integração | Deploy backend no Railway | Serviço online | Online ✅ | ✅ |
-| CT18 | Integração | CORS bloqueando frontend Vercel | CORS configurado | Corrigido | ✅ |
-| CT19 | Integração | VITE_API_URL apontando para produção | URL do Railway | Corrigido | ✅ |
-| CT20 | Integração | Login funcionando em produção | 200 OK + token | Funcionando | ✅ |
-
-> ⚠️ **Observação:** Os CTs 10–16 aguardam a configuração da variável `{{token}}` no HTTP Client do IntelliJ. Os retornos 403 observados são comportamento esperado de segurança.
-
----
-
-## ▶️ Como Executar os Testes
-
-### Pré-requisitos
-
-- IntelliJ IDEA com suporte ao HTTP Client
-- Back-end clonado e rodando em `localhost:8080`
-- Conexão com o banco Railway configurada no `application.properties`
-
-### Setup do ambiente
-
-```bash
-# 1. Clone o back-end
-git clone https://github.com/EdmaelBarretto/ProjetoReservaSegura_Back-End
-cd ProjetoReservaSegura_Back-End
-
-# 2. Configure as credenciais no application.properties
-
-# 3. Suba a aplicação
-./mvnw spring-boot:run
-```
-
-### Scripts de referência
-
-**CT01 — Cadastro com sucesso:**
-```http
-### CT01 - Registrar novo usuário
-POST http://localhost:8080/auth/register
-Content-Type: application/json
-
-{
-  "nome": "Edmael Barreto",
-  "email": "edmael@teste.com",
-  "cpf": "12345678901",
-  "senha": "123456"
-}
-```
-
-**CT06 — Login com sucesso:**
-```http
-### CT06 - Login com credenciais válidas
-POST http://localhost:8080/auth/login
-Content-Type: application/json
-
-{
-  "email": "edmael@teste.com",
-  "senha": "123456"
-}
-```
-
-**CT12 — Listar metas (autenticado):**
-```http
-### CT12 - Buscar todas as metas do usuário
-GET http://localhost:8080/metas?userId={{userId}}
-Authorization: Bearer {{token}}
-```
-
-**CT11 — Criar meta:**
-```http
-### CT11 - Criar nova meta de poupança
-POST http://localhost:8080/metas
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-  "nome": "Viagem para Europa",
-  "valorAlvo": 20000.00,
-  "userId": "{{userId}}"
-}
-```
-
----
-
-## 📸 Estrutura de Evidências
-
-```
-evidencias/
-├── auth/
-│   ├── CT01_cadastro_sucesso.png         ✅ 200 OK + token JWT
-│   ├── CT02_email_duplicado.png          ✅ 400 + "Email já cadastrado"
-│   ├── CT03_cpf_duplicado.png            ✅ 400 + "CPF duplicado"
-│   ├── CT04_campos_vazios.png            ✅ 400 + erros de validação
-│   ├── CT05_sem_body.png                 ✅ 400 + campos obrigatórios
-│   ├── CT06_login_sucesso.png            ✅ 200 OK + token + userId
-│   ├── CT07_senha_invalida.png           ✅ 403/401 Unauthorized
-│   ├── CT08_usuario_nao_encontrado.png   ✅ 401/404
-│   └── CT09_login_sem_body.png           ✅ 400 + campos obrigatórios
-├── metas/
-│   └── CT12_get_sem_token.png            ⚠️ 403 Forbidden
-└── movimentacoes/
-    └── CT14_get_sem_token.png            ⚠️ 403 Forbidden
-```
-
----
-
-## 🐛 Rastreabilidade de Bugs
-
-| ID | CT Relacionado | Descrição | Severidade | Status |
-|---|---|---|---|---|
+| ID | CT | Descrição | Severidade | Status |
+|----|----|-----------|------------|--------|
 | BUG-01 | CT10–CT16 | Rotas autenticadas retornam 403 por ausência de Bearer token no ambiente de teste | Alta | 🔲 Em aberto |
 | BUG-02 | CT07 | Retornou HTTP 403 em vez de 401 para senha inválida | Baixa | 🔲 Em análise |
 | BUG-03 | CT08 | Retornou HTTP 401 em vez de 404 para e-mail inexistente | Baixa | 🔲 Em análise |
-
-### Classificação de severidade
-
-| Severidade | Critério |
-|---|---|
-| 🔴 Crítica | Sistema inoperante, perda de dados, falha de segurança grave |
-| 🟠 Alta | Funcionalidade principal bloqueada, sem workaround |
-| 🟡 Média | Funcionalidade degradada, workaround disponível |
-| 🟢 Baixa | Comportamento diverge da spec, impacto mínimo ao usuário |
+| BUG-04 | CT-PERF-02 | Rate limiting da Vercel bloqueia IP após ~10.000 req simultâneas (comportamento esperado da plataforma) | Média | ℹ️ Aceito |
 
 ---
 
-## 📊 Métricas de Qualidade
+## Métricas
 
-| Métrica | Valor atual |
-|---|---|
-| Total de CTs planejados | 20 |
-| CTs executados | 13 |
-| CTs aprovados (✅) | 13 |
-| CTs com pendência (⚠️) | 7 |
-| CTs com falha (❌) | 0 |
-| Taxa de aprovação geral | 65% *(13/20)* |
-| Taxa de aprovação — módulo Auth | **100%** *(9/9)* |
-| Taxa de aprovação — Deploy/Integração | **100%** *(4/4)* |
+| Métrica | Valor |
+|---------|-------|
+| CTs planejados | 22 |
+| CTs executados | 15 |
+| CTs aprovados | 15 |
+| CTs pendentes | 7 |
+| CTs com falha | 0 |
+| Taxa de aprovação geral | 68% |
+| Taxa de aprovação — Auth | **100%** |
+| Taxa de aprovação — Deploy | **100%** |
 | Bugs abertos | 3 |
 | Bugs críticos | 0 |
 
 ---
 
-## ✅ Definição de Pronto (DoD)
+## Como Executar
 
-Um caso de teste é considerado **concluído** quando:
+### Testes de API
 
-- [x] CT documentado com: ID, tipo, endpoint, método, pré-condição, resultado esperado e obtido
-- [x] Evidência salva na pasta `/evidencias` com nomenclatura correta
-- [x] Status atualizado na tabela de resultados
-- [x] Bug registrado na tabela de rastreabilidade, se aplicável
-- [ ] Cenário coberto por script automatizado *(meta futura)*
-- [ ] CT revisado por outro membro do squad *(meta futura)*
+```bash
+# 1. Suba o back-end
+git clone https://github.com/EdmaelBarretto/ProjetoReservaSegura_Back-End
+cd ProjetoReservaSegura_Back-End
+./mvnw spring-boot:run
+# Disponível em localhost:8080
+```
+
+Abra os arquivos `.http` no IntelliJ IDEA e execute os CTs na ordem. Configure `{{token}}` com o JWT retornado pelo CT06 para executar os CTs autenticados (10–16).
+
+```http
+### CT06 - Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{ "email": "usuario@teste.com", "senha": "123456" }
+```
+
+### Testes de Performance (JMeter)
+
+1. Instale o [Apache JMeter 5.x](https://jmeter.apache.org/download_jmeter.cgi)
+2. Crie um Plano de Teste com: **Grupo de Usuários → Requisição HTTP → Ouvintes**
+3. Configure a requisição: `HTTPS · GET · projeto-reserva-segura-front-end.vercel.app`
+4. Ajuste as threads conforme o teste e execute
+
+> ⚠️ O teste de stress (10.000 threads) causa bloqueio temporário do IP pela Vercel. O site se recupera automaticamente em 15–60 minutos.
 
 ---
 
-## 🚀 Roadmap de Automação
+## Estrutura de Evidências
 
-| Fase | Objetivo | Ferramenta | Sprint |
-|---|---|---|---|
-| ✅ Fase 1 | Testes manuais de API — Auth | IntelliJ HTTP Client | Sprint 1 |
-| 🔲 Fase 2 | Testes manuais — Goals e Transactions com token | IntelliJ HTTP Client | Sprint 2 |
-| 🔲 Fase 3 | Automação dos CTs de API | Postman + Newman | Sprint 3 |
-| 🔲 Fase 4 | Testes unitários de services | JUnit 5 + Mockito | Sprint 3 |
-| 🔲 Fase 5 | Testes E2E no front-end | Cypress / Playwright | Sprint 4 |
-| 🔲 Fase 6 | Integração dos testes ao CI/CD | GitHub Actions | Sprint 4 |
+```
+evidencias/
+├── Reserva-Segura-QA/
+│   ├── Relatorio_Edmael_ReservaSeguraBack-End.pdf
+│   ├── Relatorio_JMeter_ReservaSegura.pdf
+
+
+```
 
 ---
 
-## 🤝 Convenções e Contribuição
+## Roadmap
 
-### Nomenclatura de artefatos
-
-| Artefato | Padrão | Exemplo |
-|---|---|---|
-| Caso de teste | `CT` + número (2 dígitos) | `CT17` |
-| Bug | `BUG-` + número | `BUG-04` |
-| Evidência | `CT[num]_[descricao].[ext]` | `CT17_create_goal_success.png` |
+| Fase | Entregável | Ferramenta | Sprint |
+|------|-----------|-----------|--------|
+| ✅ 1 | Testes manuais de API — Auth | HTTP Client | 1 |
+| ✅ 1b | Testes de carga e stress | Apache JMeter | 1 |
+| 🔲 2 | Testes manuais — Goals e Transactions | HTTP Client | 2 |
+| 🔲 3 | Automação de API | Postman + Newman | 3 |
+| 🔲 4 | Testes unitários | JUnit 5 + Mockito | 3 |
+| 🔲 5 | Testes E2E | Cypress | 4 |
+| 🔲 6 | CI/CD com testes | GitHub Actions | 4 |
 
 ---
 
 <div align="center">
-
-**Links do projeto**
-
-[🌐 Aplicação em Produção](https://projeto-reserva-segura-front-end.vercel.app/) · [⚙️ Repositório Back-End](https://github.com/EdmaelBarretto/ProjetoReservaSegura_Back-End) · [🎨 Repositório Front-End](https://github.com/EdmaelBarretto/Projeto-Reserva-Segura_Take-Off) · [🛡️ Repositório QA](https://github.com/EdmaelBarretto/Reserva-Segura-QA)
-
----
-
-*Documentação de QA — Reserva Segura · Squad 29 · Bradesco 2026.1*
-
+<sub>Reserva Segura · Squad 29 · Bradesco 2026.1</sub>
 </div>
